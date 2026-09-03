@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import HomePage from '../page';
+import HomeContent from '@/components/HomeContent';
 
 export const metadata: Metadata = {
   title: 'Agendamento de Consultas',
@@ -17,5 +17,5 @@ export const metadata: Metadata = {
 };
 
 export default function AgendamentoPage() {
-  return <HomePage initialModalOpen={true} />;
+  return <HomeContent initialModalOpen={true} />;
 }

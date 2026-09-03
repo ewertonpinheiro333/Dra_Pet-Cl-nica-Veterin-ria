@@ -153,7 +153,7 @@ export const Hours: React.FC<HoursProps> = ({ onOpenAppointment }) => {
                 className="w-full sm:w-auto min-h-[48px] px-6 py-3.5 sm:py-4 rounded-2xl bg-teal hover:bg-teal-dark text-neutral-900 font-bold text-sm sm:text-base tracking-wide transition-all shadow-md hover:shadow-teal/40 flex items-center justify-center gap-3 cursor-pointer whitespace-nowrap"
               >
                 <WhatsAppIcon size={20} className="text-neutral-900 shrink-0" />
-                <span>WhatsApp: (92) 9462-2040</span>
+                <span>WhatsApp: (92) 99462-2040</span>
               </a>
 
               <button

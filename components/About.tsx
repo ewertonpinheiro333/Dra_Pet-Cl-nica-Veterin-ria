@@ -87,7 +87,7 @@ export const About: React.FC<AboutProps> = ({ onOpenAppointment }) => {
   const highlights = [
     {
       title: 'Clínica Presencial',
-      desc: 'Estrutura aconchegante e equipada na R. José Romão, 79 - Novo Aleixo.',
+      desc: 'Estrutura aconchegante e equipada na Rua João Câmara, 680 - Novo Aleixo.',
     },
     {
       title: 'Domiciliar em Toda Manaus',
@@ -221,7 +221,7 @@ export const About: React.FC<AboutProps> = ({ onOpenAppointment }) => {
               </a>
 
               <a
-                href="https://www.instagram.com/drapet_clinicavet/"
+                href="https://www.instagram.com/drapet.am/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full min-h-[48px] px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm tracking-wide transition-all border border-white/25 hover:border-white/40 active:scale-95 cursor-pointer flex items-center justify-center gap-2 whitespace-nowrap"

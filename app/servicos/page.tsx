@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import HomePage from '../page';
+import HomeContent from '@/components/HomeContent';
 
 export const metadata: Metadata = {
   title: 'Serviços Veterinários',
@@ -17,5 +17,5 @@ export const metadata: Metadata = {
 };
 
 export default function ServicosPage() {
-  return <HomePage initialSection="servicos" />;
+  return <HomeContent initialSection="servicos" />;
 }

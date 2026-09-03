@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsap';
+import { ChevronDown } from 'lucide-react';
 import {
   StethoscopeIcon,
   MicroscopeIcon,
@@ -14,7 +15,6 @@ import {
   CheckCircleIcon,
   PawIcon,
   CalendarIcon,
-  SparklesIcon,
   TravelCertificateIcon,
   PharmacyIcon,
   GroomingIcon,
@@ -191,6 +191,14 @@ const SERVICES_DATA = [
 export const Services: React.FC<ServicesProps> = ({ onSelectServiceToBook }) => {
   const containerRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const [expandedCards, setExpandedCards] = useState<Record<string, boolean>>({});
+
+  const toggleCard = (id: string) => {
+    setExpandedCards((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
   useGSAP(
     () => {
@@ -264,18 +272,20 @@ export const Services: React.FC<ServicesProps> = ({ onSelectServiceToBook }) => 
         {/* All Services Grid displayed directly: 1 col on mobile, 2 on tablet, 3 on desktop */}
         <div
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch"
         >
           {SERVICES_DATA.map((service) => {
             const Icon = service.icon;
+            const isExpanded = !!expandedCards[service.id];
+
             return (
               <div
                 key={service.id}
-                className="service-card-item bg-white text-neutral-900 rounded-3xl p-5 sm:p-7 lg:p-8 shadow-xl border border-lilac-light/30 flex flex-col justify-between hover:-translate-y-1.5 transition-all duration-300 group"
+                className="service-card-item bg-white text-neutral-900 rounded-3xl p-5 sm:p-7 lg:p-8 shadow-xl border border-lilac-light/30 flex flex-col justify-between hover:-translate-y-1.5 transition-all duration-300 group h-full"
               >
-                <div>
+                <div className="flex-1 flex flex-col">
                   {/* Top Header Card */}
-                  <div className="flex items-start justify-between mb-5">
+                  <div className="flex items-start justify-between mb-4 sm:mb-5">
                     <div className="w-13 h-13 sm:w-14 sm:h-14 rounded-2xl bg-lilac/15 text-lilac-dark group-hover:bg-teal group-hover:text-neutral-900 transition-colors duration-300 flex items-center justify-center shrink-0">
                       <Icon size={28} />
                     </div>
@@ -285,34 +295,63 @@ export const Services: React.FC<ServicesProps> = ({ onSelectServiceToBook }) => 
                     </span>
                   </div>
 
-                  <h3 className="font-display font-extrabold text-xl sm:text-2xl text-lilac-dark group-hover:text-neutral-900 transition-colors mb-1">
+                  <h3 className="font-display font-extrabold text-xl sm:text-2xl text-lilac-dark group-hover:text-neutral-900 transition-colors mb-1 min-h-[1.75rem] sm:min-h-[2rem]">
                     {service.name}
                   </h3>
 
-                  <p className="text-xs font-semibold text-teal-dark mb-3 sm:mb-4">
+                  <p className="text-xs font-semibold text-teal-dark mb-2 sm:mb-2.5">
                     {service.tagline}
                   </p>
 
-                  <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed mb-5 sm:mb-6">
+                  <p
+                    title={service.description}
+                    className="text-xs sm:text-sm text-neutral-600 leading-relaxed truncate mb-3"
+                  >
                     {service.description}
                   </p>
 
-                  {/* Highlights List */}
-                  <div className="space-y-2.5 pt-4 border-t border-neutral-100">
-                    <span className="text-[11px] uppercase tracking-wider font-extrabold text-neutral-600 block">
-                      O que inclui:
-                    </span>
-                    {service.highlights.map((h, i) => (
-                      <div key={i} className="flex items-start gap-2 text-xs text-neutral-700">
-                        <CheckCircleIcon size={15} className="text-teal-dark shrink-0 mt-0.5" />
-                        <span>{h}</span>
+                  {/* Saiba mais toggle button */}
+                  <div className="mb-2">
+                    <button
+                      type="button"
+                      onClick={() => toggleCard(service.id)}
+                      aria-expanded={isExpanded}
+                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-lilac-dark hover:text-teal-dark transition-colors py-1 cursor-pointer select-none group/btn"
+                    >
+                      <span>{isExpanded ? 'Ver menos' : 'Saiba mais'}</span>
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-[250ms] ease-in-out shrink-0 text-lilac-dark group-hover/btn:text-teal-dark ${
+                          isExpanded ? 'rotate-180' : 'rotate-0'
+                        }`}
+                      />
+                    </button>
+                  </div>
+
+                  {/* Accordion content: O que inclui */}
+                  <div
+                    className={`grid transition-[grid-template-rows] duration-[250ms] ease-in-out ${
+                      isExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="space-y-2.5 pt-4 pb-1 border-t border-neutral-100">
+                        <span className="text-[11px] uppercase tracking-wider font-extrabold text-neutral-600 block">
+                          O que inclui:
+                        </span>
+                        {service.highlights.map((h, i) => (
+                          <div key={i} className="flex items-start gap-2 text-xs text-neutral-700">
+                            <CheckCircleIcon size={15} className="text-teal-dark shrink-0 mt-0.5" />
+                            <span>{h}</span>
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    </div>
                   </div>
                 </div>
 
                 {/* Bottom Action CTA */}
-                <div className="mt-6 sm:mt-8 pt-4 sm:pt-5 border-t border-neutral-100 flex items-center gap-2.5 sm:gap-3">
+                <div className="mt-5 pt-4 sm:pt-5 border-t border-neutral-100 flex items-center gap-2.5 sm:gap-3">
                   <a
                     href={`https://wa.me/5592994622040?text=${encodeURIComponent(service.whatsappMsg)}`}
                     target="_blank"
