@@ -1,0 +1,6 @@
+{
+  "name": "Dra. Pet Clínica Veterinária",
+  "description": "Site institucional da Dra. Pet Clínica Veterinária em Manaus (AM). Cuidado humanizado, consultas, exames, vacinas, cirurgias e atendimento a domicílio.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

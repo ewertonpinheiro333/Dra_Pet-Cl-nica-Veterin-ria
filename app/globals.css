@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  --color-lilac-light: #C9A7E8;
+  --color-lilac: #9B6FCE;
+  --color-lilac-dark: #6B3FA0;
+  --color-teal: #2DD4BF;
+  --color-teal-dark: #14B8A6;
+  --color-white: #FFFFFF;
+  --color-neutral-900: #1F1B24;
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+:root {
+  --color-lilac-light: #C9A7E8;
+  --color-lilac: #9B6FCE;
+  --color-lilac-dark: #6B3FA0;
+  --color-teal: #2DD4BF;
+  --color-teal-dark: #14B8A6;
+  --color-white: #FFFFFF;
+  --color-neutral-900: #1F1B24;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #9B6FCE;
+  color: #FFFFFF;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #6B3FA0;
+}
+::-webkit-scrollbar-thumb {
+  background: #2DD4BF;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #14B8A6;
+}
+
+/* Radix Accordion Animation */
+.accordion-content[data-state='open'] {
+  animation: accordionDown 250ms ease-out;
+}
+.accordion-content[data-state='closed'] {
+  animation: accordionUp 200ms ease-in;
+}
+
+@keyframes accordionDown {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+}
+
+@keyframes accordionUp {
+  from {
+    height: var(--radix-accordion-content-height);
+    opacity: 1;
+  }
+  to {
+    height: 0;
+    opacity: 0;
+  }
+}
+
+/* Infinite Marquee Looping */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Hide scrollbar for seamless carousels */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
