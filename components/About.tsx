@@ -4,11 +4,10 @@ import React, { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import { gsap } from '@/lib/gsap';
 import {
-  StarIcon,
   CheckCircleIcon,
   PawIcon,
-  SparklesIcon,
-  StethoscopeIcon,
+  WhatsAppIcon,
+  InstagramIcon,
 } from './icons/CustomIcons';
 
 interface AboutProps {
@@ -189,48 +188,47 @@ export const About: React.FC<AboutProps> = ({ onOpenAppointment }) => {
           <div className="absolute top-0 right-0 w-64 h-64 bg-teal/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center relative z-10">
-            {/* Left Col: Big Rating Badge */}
+            {/* Bloco esquerdo: Feedbacks */}
             <div className="lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left border-b lg:border-b-0 lg:border-r border-white/20 pb-5 sm:pb-6 lg:pb-0 lg:pr-8">
-              <div className="flex items-center gap-1.5 mb-2">
-                {[...Array(5)].map((_, i) => (
-                  <StarIcon
-                    key={i}
-                    size={22}
-                    filled
-                    className="text-teal drop-shadow-sm"
-                  />
-                ))}
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="font-display text-4xl sm:text-5xl font-black text-white">5.0</span>
-                <span className="text-lg sm:text-xl text-white/70 font-semibold">/ 5.0</span>
-              </div>
-              <p className="text-xs sm:text-sm text-teal font-semibold mt-1 flex items-center gap-1">
-                <SparklesIcon size={14} />
-                <span>100% de Recomendação dos Tutores</span>
-              </p>
-            </div>
-
-            {/* Middle Col: Description */}
-            <div className="lg:col-span-5 text-center lg:text-left">
-              <h3 className="font-display font-bold text-lg sm:text-xl md:text-2xl text-white mb-2">
-                Excelência e Cuidado no Atendimento Veterinário
+              <h3 className="font-display text-2xl sm:text-3xl font-extrabold text-white leading-tight tracking-tight">
+                Cuidado que faz diferença
               </h3>
-              <p className="text-xs sm:text-sm text-white/85 leading-relaxed">
-                Com dezenas de <strong>avaliações 5 estrelas</strong>, nossa equipe é destacada pela pontualidade, carinho no acolhimento e diagnósticos seguros para cães e gatos em Manaus.
+              <p className="text-sm sm:text-base text-teal font-bold mt-2 tracking-wide">
+                Feedbacks positivos de tutores
               </p>
             </div>
 
-            {/* Right Col: CTA button */}
-            <div className="lg:col-span-3 flex justify-center lg:justify-end w-full sm:w-auto">
-              <button
-                type="button"
-                onClick={onOpenAppointment}
-                className="w-full sm:w-auto min-h-[48px] px-6 py-3.5 rounded-2xl bg-teal hover:bg-teal-dark text-neutral-900 font-bold text-sm tracking-wide transition-all shadow-glow hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center gap-2 whitespace-nowrap"
+            {/* Texto central */}
+            <div className="lg:col-span-5 text-center lg:text-left">
+              <h3 className="font-display font-bold text-lg sm:text-xl md:text-2xl text-white mb-2 leading-tight">
+                O cuidado que conquista tutores
+              </h3>
+              <p className="text-xs sm:text-sm text-white/90 leading-relaxed">
+                Carinho, atenção e cuidado de verdade em cada atendimento. Recebemos diariamente mensagens de tutores que confiam na Dra. Pet para cuidar da saúde e do bem-estar dos seus cães e gatos.
+              </p>
+            </div>
+
+            {/* Botões à direita */}
+            <div className="lg:col-span-3 flex flex-col sm:flex-row lg:flex-col gap-3 justify-center items-stretch w-full">
+              <a
+                href="https://wa.me/5592994622040"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full min-h-[48px] px-5 py-3 rounded-2xl bg-teal hover:bg-teal-dark text-neutral-900 font-bold text-sm tracking-wide transition-all shadow-glow hover:scale-105 active:scale-95 cursor-pointer flex items-center justify-center gap-2 whitespace-nowrap"
               >
-                <StethoscopeIcon size={18} />
-                <span>Agendar Consulta</span>
-              </button>
+                <WhatsAppIcon size={18} className="text-neutral-900 shrink-0" />
+                <span>Agendar consulta</span>
+              </a>
+
+              <a
+                href="https://www.instagram.com/drapet_clinicavet/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full min-h-[48px] px-5 py-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm tracking-wide transition-all border border-white/25 hover:border-white/40 active:scale-95 cursor-pointer flex items-center justify-center gap-2 whitespace-nowrap"
+              >
+                <InstagramIcon size={18} className="text-white shrink-0" />
+                <span>Conheça nosso Instagram</span>
+              </a>
             </div>
           </div>
         </div>

@@ -76,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAppointment }) => {
               </a>
 
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/drapet.am/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram Dra. Pet"

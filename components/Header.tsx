@@ -79,7 +79,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAppointment }) => {
               className="inline-flex items-center gap-1 text-teal hover:text-white transition-colors font-semibold text-[11px]"
             >
               <WhatsAppIcon size={13} />
-              <span>(92) 9462-2040</span>
+              <span>(92) 99462-2040</span>
             </a>
           </div>
         </div>

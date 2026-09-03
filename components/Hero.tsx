@@ -251,13 +251,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAppointment }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-lilac-dark/85 via-lilac-dark/10 to-transparent" />
 
                 {/* Clinic identity chip */}
-                <div className="absolute top-4 left-4 sm:top-5 sm:left-5 flex items-center gap-2.5 bg-white/95 backdrop-blur-md pl-2 pr-3.5 py-2 rounded-full shadow-md">
-                  <div className="w-8 h-8 rounded-full bg-lilac/15 text-lilac-dark flex items-center justify-center shrink-0">
-                    <HeartPawIcon size={18} />
-                  </div>
+                <div className="absolute top-4 left-4 sm:top-5 sm:left-5 flex items-center bg-white/95 backdrop-blur-md px-3.5 sm:px-4 py-2 rounded-2xl sm:rounded-full shadow-md">
                   <div className="text-left leading-tight">
                     <p className="font-display font-extrabold text-xs text-lilac-dark">Dra. Pet Clínica</p>
-                    <p className="text-[10px] text-neutral-600 font-medium">Manaus · Novo Aleixo</p>
+                    <p className="text-[10px] text-neutral-600 font-medium">Manaus - Novo Aleixo</p>
                   </div>
                 </div>
 
@@ -310,19 +307,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenAppointment }) => {
               </div>
             </div>
 
-            {/* Floating Badge 1 (Rating) */}
+            {/* Floating Badge 1 (Atendimento com carinho) */}
             <div
               ref={floatingItem1Ref}
               className="absolute top-2 left-2 sm:-top-5 sm:-left-6 lg:-left-8 bg-white text-neutral-900 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl shadow-xl border border-lilac-light/40 flex items-center gap-2 sm:gap-2.5 z-20"
             >
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-100 text-amber-500 flex items-center justify-center shrink-0">
-                <StarIcon size={16} filled className="text-amber-500" />
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-lilac/15 text-lilac-dark flex items-center justify-center shrink-0">
+                <HeartPawIcon size={16} />
               </div>
               <div>
-                <div className="flex items-center gap-1 font-bold text-xs text-neutral-900">
-                  <span>5.0 de 5.0</span>
-                </div>
-                <p className="text-[9px] sm:text-[10px] text-neutral-600">Avaliações verificadas</p>
+                <p className="font-bold text-xs text-neutral-900 leading-tight">
+                  Atendimento com carinho
+                </p>
+                <p className="text-[9px] sm:text-[10px] text-neutral-600">Para Cães e Gatos</p>
               </div>
             </div>
 
